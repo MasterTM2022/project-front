@@ -6,6 +6,44 @@
 </head>
 <body>
 <h1>RPG admin panel</h1>
+<table id="tab1">
+    <thead>
+    <tr>
+        <td>#</td>
+        <td>Name</td>
+        <td>Title</td>
+        <td>Race</td>
+        <td>Profession</td>
+        <td>Level</td>
+        <td>Birthday</td>
+        <td>Banned</td>
+    </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+</table>
+
+<script type="text/javascript">
+    $.ajax({
+        url: '/rest/players',
+        dataType: 'json',
+        success: function (data) {
+            for (var i = 0; i < data.length; i++) {
+                var row = $('<tr><td>'
+                    + data[i].id + '</td><td>'
+                    + data[i].name + '</td><td>'
+                    + data[i].title + '</td><td>'
+                    + data[i].race + '</td><td>'
+                    + data[i].profession + '</td><td>'
+                    + data[i].birthday + '</td><td>'
+                    + data[i].banned + '</td><td>'
+                    + data[i].level + '</td></tr>');
+                $('#tab1').append(row);
+            }
+        }
+    });
+</script>
 
 </body>
 </html>
